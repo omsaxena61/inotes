@@ -5,14 +5,12 @@ const app = express()
 const port = 3000
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-  console.log("app4");
-})
+
 
 
 //Available routes
 app.use(express.json())
+app.use('/get',require('./routes/get'))
 app.use('/api/auth',require('./routes/auth'))
 app.use('/api/notes',require('./routes/notes'))
 
