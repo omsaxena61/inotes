@@ -10,11 +10,11 @@ const NoteSchema = new Schema({
         required:true
         
       },
-      tag: {
-        type:String,
-        default:"genral"
+      // tag: {
+      //   type:String,
+      //   default:"genral"
 
-      },
+      // },
       date: {
         type:String,
         default:Date.now
