@@ -13,7 +13,7 @@ const fetchuser=(req,res,next)=>{
       next();
         
       } catch (error) {
-        res.send(error.message)
+        res.status(401).send(error.message)
       }
       
 }

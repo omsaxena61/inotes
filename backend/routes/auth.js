@@ -115,5 +115,5 @@ router.post("/getuser", fetchuser, async (req, res) => {
   } catch (error) {
     res.send(error.message);
   }
-})
+});
 module.exports = router;
