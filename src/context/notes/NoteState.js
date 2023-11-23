@@ -18,7 +18,7 @@ const NoteState=(props)=>{
     const update=()=>{
         setTimeout(()=>{
             setstate({
-                "name":"om1",
+                "name":"om2",
                 "class":"8b"
             })
         },1000);
