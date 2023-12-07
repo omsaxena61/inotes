@@ -48,6 +48,33 @@ const NoteState=(props)=>{
           "tag": "updated",
           "date": "1701418037786",
           "__v": 0
+        },
+        {
+          "user": "654dbac38ae4a5bd315ebf07",
+          "title": "Instagram",
+          "description": "please make more reels",
+          "tag": "updated",
+          "_id": "6571749522fd0db48c38ee0a",
+          "date": "1701934229994",
+          "__v": 0
+        },
+        {
+          "user": "654dbac38ae4a5bd315ebf07",
+          "title": "Instagram",
+          "description": "please make more reels",
+          "tag": "updated",
+          "_id": "6571749522fd0db48c38ee0a",
+          "date": "1701934229994",
+          "__v": 0
+        },
+        {
+          "user": "654dbac38ae4a5bd315ebf07",
+          "title": "Snapchat",
+          "description": "please make more snaps",
+          "tag": "updated",
+          "_id": "657174cc0b9372da880f9454",
+          "date": "1701934284366",
+          "__v": 0
         }
       ]
 

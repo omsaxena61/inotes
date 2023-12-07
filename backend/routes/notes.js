@@ -14,8 +14,8 @@ router.get("/fetchallnotes", fetchuser, async (req, res) => {
   }
 });
 
-//ROUTE2 ge all the notes using :POST "/api/notesaddnotes'".  login required
-router.get(
+//ROUTE2 add all the notes using :POST "/api/notesaddnotes'".  login required
+router.post(
   "/addnote",
   fetchuser,
   body("title", "name must be atleast 3 letters").isLength({ min: 5 }),
