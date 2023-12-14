@@ -14,7 +14,7 @@ const NoteState=(props)=>{
     // }
     const notesinitial=[
         {
-          "_id": "654dd82508da345f92f517e7",
+          "_id": "76514dd82508da345f92f517e7",
           "user": "654dbac38ae4a5bd315ebf07",
           "title": "application",
           "description": "please go gymbro",
@@ -23,7 +23,7 @@ const NoteState=(props)=>{
           "__v": 0
         },
         {
-          "_id": "654dd82608da345f92f517e9",
+          "_id": "66524dd82608da345f92f517e9",
           "user": "654dbac38ae4a5bd315ebf07",
           "title": "application",
           "description": "please go gymbro",
@@ -32,7 +32,7 @@ const NoteState=(props)=>{
           "__v": 0
         },
         {
-          "_id": "654dd82608da345f92f517eb",
+          "_id": "56534dd82608da345f92f517eb",
           "user": "654dbac38ae4a5bd315ebf07",
           "title": "application",
           "description": "please go gymbro",
@@ -41,7 +41,7 @@ const NoteState=(props)=>{
           "__v": 0
         },
         {
-          "_id": "6569943523c8d308c48c0597",
+          "_id": "465469943523c8d308c48c0597",
           "user": "654dbac38ae4a5bd315ebf07",
           "title": "youtube",
           "description": "please make more videos",
@@ -50,29 +50,29 @@ const NoteState=(props)=>{
           "__v": 0
         },
         {
-          "user": "654dbac38ae4a5bd315ebf07",
+          "user": "6545dbac38ae4a5bd315ebf07",
           "title": "Instagram",
           "description": "please make more reels",
           "tag": "updated",
-          "_id": "6571749522fd0db48c38ee0a",
+          "_id": "36571749522fd0db48c38ee0a",
           "date": "1701934229994",
           "__v": 0
         },
         {
-          "user": "654dbac38ae4a5bd315ebf07",
+          "user": "6546dbac38ae4a5bd315ebf07",
           "title": "Instagram",
           "description": "please make more reels",
           "tag": "updated",
-          "_id": "6571749522fd0db48c38ee0a",
+          "_id": "26571749522fd0db48c38ee0a",
           "date": "1701934229994",
           "__v": 0
         },
         {
-          "user": "654dbac38ae4a5bd315ebf07",
+          "user": "6547dbac38ae4a5bd315ebf07",
           "title": "Snapchat",
           "description": "please make more snaps",
           "tag": "updated",
-          "_id": "657174cc0b9372da880f9454",
+          "_id": "1657174cc0b9372da880f9454",
           "date": "1701934284366",
           "__v": 0
         }
@@ -80,7 +80,8 @@ const NoteState=(props)=>{
 
       const [notes, setNotes] = useState(notesinitial)
         
-    
+      //ADD A NOTE
+      const addNote=()=>{}
 
      
     
