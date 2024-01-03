@@ -1,97 +1,126 @@
-
 import { useState } from "react";
 import NoteContext from "./noteContext";
 
 // import { createContext } from "react";
 // const noteContext=createContext();
 
+const NoteState = (props) => {
+  const host = "http://localhost:5000";
+  // const  s1={
+  //     "name":"harry",
+  //     "class":"6b"
+  // }
+  const notesinitial = [];
 
-const NoteState=(props)=>{
+  const [notes, setNotes] = useState(notesinitial);
 
-    // const  s1={
-    //     "name":"harry",
-    //     "class":"6b"
-    // }
-    const notesinitial=[
-        {
-          "_id": "76514dd82508da345f92f517e7",
-          "user": "654dbac38ae4a5bd315ebf07",
-          "title": "application",
-          "description": "please go gymbro",
-          "tag": "faltu",
-          "date": "1699600421607",
-          "__v": 0
-        },
-        {
-          "_id": "66524dd82608da345f92f517e9",
-          "user": "654dbac38ae4a5bd315ebf07",
-          "title": "application",
-          "description": "please go gymbro",
-          "tag": "faltu",
-          "date": "1699600422114",
-          "__v": 0
-        },
-        {
-          "_id": "56534dd82608da345f92f517eb",
-          "user": "654dbac38ae4a5bd315ebf07",
-          "title": "application",
-          "description": "please go gymbro",
-          "tag": "faltu",
-          "date": "1699600422568",
-          "__v": 0
-        },
-        {
-          "_id": "465469943523c8d308c48c0597",
-          "user": "654dbac38ae4a5bd315ebf07",
-          "title": "youtube",
-          "description": "please make more videos",
-          "tag": "updated",
-          "date": "1701418037786",
-          "__v": 0
-        },
-        {
-          "user": "6545dbac38ae4a5bd315ebf07",
-          "title": "Instagram",
-          "description": "please make more reels",
-          "tag": "updated",
-          "_id": "36571749522fd0db48c38ee0a",
-          "date": "1701934229994",
-          "__v": 0
-        },
-        {
-          "user": "6546dbac38ae4a5bd315ebf07",
-          "title": "Instagram",
-          "description": "please make more reels",
-          "tag": "updated",
-          "_id": "26571749522fd0db48c38ee0a",
-          "date": "1701934229994",
-          "__v": 0
-        },
-        {
-          "user": "6547dbac38ae4a5bd315ebf07",
-          "title": "Snapchat",
-          "description": "please make more snaps",
-          "tag": "updated",
-          "_id": "1657174cc0b9372da880f9454",
-          "date": "1701934284366",
-          "__v": 0
-        }
-      ]
+//GET ALL NOTE
+const getNotes = async() => {
+  //API CALL
+  const response = await fetch(`${host}/api/notes//fetchallnotes`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token":
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjU0ZGJhYzM4YWU0YTViZDMxNWViZjA3In0sImlhdCI6MTY5OTU5Mjg5OX0.8fN9FNPtaLsv2Py6wFVLm5krswkpXvyK1841C5s4PCs",
+    },
 
-      const [notes, setNotes] = useState(notesinitial)
-        
-      //ADD A NOTE
-      const addNote=()=>{}
-
-     
     
-    // The Provider component is what allows components to consume the values from the context. It takes a prop called value, which is the value that will be shared with components that are descendants of this Provider. The value can be a static value or even a state from a component.
-   return (
-    <NoteContext.Provider value={{notes,setNotes}}>
-    {props.children}
-    </NoteContext.Provider>
-   )
-} 
+  });
+  const json=await response.json();
+  console.log(json)
+  // setNotes(json)
+}
+  //ADD A NOTE
+  const addNote = async(title, description, tag) => {
+    //API CALL to add the note t backend
+    const response = await fetch(`${host}/api/notes/addnote`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjU0ZGJhYzM4YWU0YTViZDMxNWViZjA3In0sImlhdCI6MTY5OTU5Mjg5OX0.8fN9FNPtaLsv2Py6wFVLm5krswkpXvyK1841C5s4PCs",
+      },
 
+      body: JSON.stringify({ title, description, tag }), // body data type must match "Content-Type" header
+      
+    });
+    const json=await response.json();
+    console.log(json)
+    console.log("Adding a new note");
+    const note = {
+      user: "6547dbac38ae4a5bd315ebf07",
+      title: title,
+      description: description,
+      tag: tag,
+      _id: "1657174cc0b9372da880f9454",
+      date: "1701934284366",
+      __v: 0,
+    };
+    setNotes(notes.concat(note));
+  };
+
+  //delete a note
+  const deleteNote = async(id) => {
+    //API CALL
+    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjU0ZGJhYzM4YWU0YTViZDMxNWViZjA3In0sImlhdCI6MTY5OTU5Mjg5OX0.8fN9FNPtaLsv2Py6wFVLm5krswkpXvyK1841C5s4PCs",
+      },
+
+      
+    });
+    // const json= response.json();
+     const json=response.json();
+     console.log(json)
+    console.log("Deleting a note with id " + id);
+    const newNotes = notes.filter((note) => {
+      return note._id !== id;
+    });
+    setNotes(newNotes);
+  };
+
+  //edit a notee
+  const editNote = async (id, title, description, tag) => {
+    //API CALL
+
+    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjU0ZGJhYzM4YWU0YTViZDMxNWViZjA3In0sImlhdCI6MTY5OTU5Mjg5OX0.8fN9FNPtaLsv2Py6wFVLm5krswkpXvyK1841C5s4PCs",
+      },
+
+      body: JSON.stringify({ title, description, tag }), // body data type must match "Content-Type" header
+    });
+    // const json= response.json();
+     const json=response.json();
+     console.log(json);
+
+     let newNotes= JSON.parse(JSON.stringify(notes))
+     //logic to edit in client
+    for (let index = 0; index < newNotes.length; index++) {
+      const element = newNotes[index];
+      if (element._id === id) {
+        newNotes[index].title = title;
+        newNotes[index].description = description;
+        newNotes[index].tag = tag;
+        break;
+      }
+    }
+    setNotes(newNotes);
+  };
+
+  // The Provider component is what allows components to consume the values from the context. It takes a prop called value, which is the value that will be shared with components that are descendants of this Provider. The value can be a static value or even a state from a component.
+  return (
+    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote,getNotes }}>
+      {props.children}
+    </NoteContext.Provider>
+  );
+};
 
 export default NoteState;

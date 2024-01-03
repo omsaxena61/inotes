@@ -28,6 +28,7 @@ function App() {
             </Switch>
           </div>
         </Router>
+        <h1>thanks</h1>
       </NoteState>
     </>
   );
