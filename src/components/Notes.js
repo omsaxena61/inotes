@@ -6,7 +6,7 @@ import AddNote from "./AddNote";
 const Notes = () => {
   const context = useContext(noteContext);
   const { notes, getNotes ,editNote} = context; //destructuring
-  const [note, setnote] = useState({
+  const [note, setnote] = useState({id:"",
     etitle: "",
     edescription: "",
     etag: "",
@@ -17,7 +17,7 @@ const Notes = () => {
   // eslint-disable-next-line
   const updateNote = (currentNote) => {
     ref.current.click();
-    setnote({etitle: currentNote.title, edescription: currentNote.description, etag:currentNote.tag});
+    setnote({id:currentNote._id,etitle: currentNote.title, edescription: currentNote.description, etag:currentNote.tag});
   };
   const ref = useRef(null);
   const refclose=useRef(null);
@@ -76,7 +76,7 @@ const Notes = () => {
                     name="etitle"
                     value={note.etitle}
                     aria-describedby="emailHelp"
-                    onChange={onChange}
+                    onChange={onChange} minLength={5} required
                   />
                   <div id="emailHelp" className="form-text">
                     We'll never share your email with anyone else.
@@ -92,7 +92,7 @@ const Notes = () => {
                     id="edescription"
                     name="edescription"
                     value={note.edescription}
-                    onChange={onChange}
+                    onChange={onChange} minLength={5} required
                   />
                 </div>
                 <div className="mb-3">
@@ -120,7 +120,7 @@ const Notes = () => {
               >
                 Close
               </button>
-              <button  onClick={handleClick} type="button" className="btn btn-primary">
+              <button disabled={note.etitle.length<5 || note.edescription.length<5} onClick={handleClick} type="button" className="btn btn-primary">
                 Update Note
               </button>
             </div>
@@ -129,6 +129,9 @@ const Notes = () => {
       </div>
       <div className="row my-3">
         <h1>your Notes</h1>
+        <div className="container mx-2">
+          {notes.length===0 && 'No notes to display'}
+        </div>
         {notes.map((note1) => {
           return (
             <Noteitem

@@ -29,7 +29,7 @@ const getNotes = async() => {
   });
   const json=await response.json();
   console.log(json)
-  // setNotes(json)
+  setNotes(json)
 }
   //ADD A NOTE
   const addNote = async(title, description, tag) => {
@@ -45,18 +45,8 @@ const getNotes = async() => {
       body: JSON.stringify({ title, description, tag }), // body data type must match "Content-Type" header
       
     });
-    const json=await response.json();
-    console.log(json)
-    console.log("Adding a new note");
-    const note = {
-      user: "6547dbac38ae4a5bd315ebf07",
-      title: title,
-      description: description,
-      tag: tag,
-      _id: "1657174cc0b9372da880f9454",
-      date: "1701934284366",
-      __v: 0,
-    };
+    const note=await response.json();
+    
     setNotes(notes.concat(note));
   };
 
@@ -74,7 +64,7 @@ const getNotes = async() => {
       
     });
     // const json= response.json();
-     const json=response.json();
+     const json=await response.json();
      console.log(json)
     console.log("Deleting a note with id " + id);
     const newNotes = notes.filter((note) => {
@@ -98,7 +88,7 @@ const getNotes = async() => {
       body: JSON.stringify({ title, description, tag }), // body data type must match "Content-Type" header
     });
     // const json= response.json();
-     const json=response.json();
+     const json=await response.json();
      console.log(json);
 
      let newNotes= JSON.parse(JSON.stringify(notes))

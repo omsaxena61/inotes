@@ -25,7 +25,8 @@ const Noteitem = (props) => {
             ></i>
           </div>
 
-          <p className="card-text">{note.description} </p>
+          <p className="card-text">{note.description} - {note.tag} </p>
+          
         </div>
       </div>
     </div>

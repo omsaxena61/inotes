@@ -7,11 +7,14 @@ const AddNote = () => {
   const [note, setnote] = useState({
     title: "",
     description: "",
-    tag: "default",
+    tag: "",
   });
   const handleClick = (e) => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
+    setnote({title: "",
+    description: "",
+    tag: "",})
   };
   const onChange = (e) => {
     setnote({ ...note, [e.target.name]: e.target.value });
@@ -31,8 +34,8 @@ const AddNote = () => {
               className="form-control"
               id="title"
               name="title"
-              aria-describedby="emailHelp"
-              onChange={onChange}
+              aria-describedby="emailHelp" value={note.title}
+              onChange={onChange} minLength={5} required
             />
             <div id="emailHelp" className="form-text">
               We'll never share your email with anyone else.
@@ -47,7 +50,8 @@ const AddNote = () => {
               className="form-control"
               id="description"
               name="description"
-              onChange={onChange}
+              value={note.description}
+              onChange={onChange} minLength={5} required
             />
           </div>
           <div className="mb-3">
@@ -59,11 +63,12 @@ const AddNote = () => {
               className="form-control"
               id="tag"
               name="tag"
-              onChange={onChange}
+              value={note.tag}
+              onChange={onChange}  minLength={5} required
             />
           </div>
 
-          <button
+          <button disabled={note.title.length<5 || note.description.length<5}
             type="submit"
             className="btn btn-primary"
             onClick={handleClick}
