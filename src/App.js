@@ -18,15 +18,16 @@ function App() {
           <Alert message="This is amazing react course"/>
           <div className="container">
             <Switch>
-              <Route exact path="/about">
+            <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path ="/about">
                 <About />
               </Route>
               {/* <Route exact path="/users">
             <Users />
           </Route> */}
-              <Route exact path="/">
-                <Home />
-              </Route>
+             
               <Route exact path="/login">
                 <Login />
               </Route>

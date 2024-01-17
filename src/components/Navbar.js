@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import React from "react";
-import { Link ,useLocation} from "react-router-dom/cjs/react-router-dom.min";
+import { Link ,useLocation} from "react-router-dom";
 
 const Navbar = () => {
   let location = useLocation();
@@ -21,7 +21,7 @@ const Navbar = () => {
             <Link className={`nav-link ${location.pathname==="/"?"active":""}`} aria-current="page" to="/">Home</Link>
           </li>
           <li className="nav-item">
-            <Link  className={`nav-link ${location.pathname==="/about"?"active":""}`} aria-current="page" to="/about">About</Link>
+            <Link  className={`nav-link ${location.pathname==="/about"?"active":""}`} to="/about">About</Link>
           </li>
           
           
