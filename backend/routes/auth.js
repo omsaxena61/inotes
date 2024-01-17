@@ -78,6 +78,7 @@ router.post(
     ).exists(),
   ],
   async (req, res) => {
+    let success=false
     // if there are errors return bad request and errors
     const errors = validationResult(req);
     console.log(!errors.isEmpty());
