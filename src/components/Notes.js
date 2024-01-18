@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useRef ,useState} from "react";
 import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
 import AddNote from "./AddNote";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Notes = (props) => {
   const context = useContext(noteContext);
+  let history=useHistory();
   const { notes, getNotes ,editNote} = context; //destructuring
   const [note, setnote] = useState({id:"",
     etitle: "",
@@ -12,9 +14,16 @@ const Notes = (props) => {
     etag: "",
   });
   useEffect(() => {
-    getNotes();
+    if(localStorage.getItem('token')){
+      getNotes();
+    }
+    else
+    {
+      history.push("/login")
+    }
+    // eslint-disable-next-line
   }, []);
-  // eslint-disable-next-line
+  
   const updateNote = (currentNote) => {
     ref.current.click();
     setnote({id:currentNote._id,etitle: currentNote.title, edescription: currentNote.description, etag:currentNote.tag});

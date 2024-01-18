@@ -34,7 +34,8 @@ const Signup = (props) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
   return (
-    <div className="container">
+    <div className="mt-1">
+      <h2>Sign up inotes app</h2>
       <form onSubmit={handleSubmit}>
       <div className="mb-3">
           <label htmlFor="name" className="form-label">
